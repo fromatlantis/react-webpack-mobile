@@ -1,5 +1,5 @@
-import Loadable from 'react-loadable';
-import { FullScreenLoading } from '../components';
+import Loadable from 'react-loadable'
+import { FullScreenLoading } from '../components'
 
 const routes = [
     {
@@ -8,23 +8,23 @@ const routes = [
         icon: 'appstore',
         navAttr: {
             index: 1,
-            role: 'home'
+            role: 'home',
         },
         component: Loadable({
-            loader: () => import(/* webpackChunkName: "home" */'../screens/Home'),
+            loader: () => import(/* webpackChunkName: "home" */ '../screens/Home'),
             loading: FullScreenLoading,
-        })
+        }),
     },
     {
         path: '/demo',
         component: Loadable({
-            loader: () => import(/* webpackChunkName: "demo" */'../components/Demo/Demo'),
+            loader: () => import(/* webpackChunkName: "demo" */ '../components/Demo/Demo'),
             loading: FullScreenLoading,
-        })
-    }
-];
+        }),
+    },
+]
 
-export default (auths) => {
+export default auths => {
     // auths = ['房源管理', '租赁审批']
     let allRoutes = []
     routes.map(item => {
@@ -33,7 +33,7 @@ export default (auths) => {
                 let first = {
                     path: child.path,
                     component: child.component,
-                    role: child.role
+                    role: child.role,
                 }
                 allRoutes.push(first)
                 return true
@@ -42,11 +42,11 @@ export default (auths) => {
             let first = {
                 path: item.path,
                 component: item.component,
-                role: item.role
+                role: item.role,
             }
             allRoutes.push(first)
         }
-        return true;
+        return true
     })
-    return allRoutes.filter(route => !route.role || auths.includes(route.role));
+    return allRoutes.filter(route => !route.role || auths.includes(route.role))
 }
