@@ -18,7 +18,7 @@ const routes = [
     {
         path: '/demo',
         component: Loadable({
-            loader: () => import(/* webpackChunkName: "demo" */ '../components/Demo/Demo'),
+            loader: () => import(/* webpackChunkName: "demo" */ '../components/Form/Form'),
             loading: FullScreenLoading,
         }),
     },

@@ -15,6 +15,7 @@ class Main extends Component {
          * 如果session过期，userinfo接口不会返回401状态
          * 所以每次刷新页面需要重新获取用户信息
          */
+        //alert(window.tukit.token)
         this.props.userInfo()
     }
     render() {

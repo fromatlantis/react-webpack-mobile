@@ -14,3 +14,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+// antd样式重置
+.am-navbar-title {
+    font-size: 16px;
+}
+.am-list-item .am-input-label {
+    font-size: 15px;
+}
+.am-list-item .am-input-control input {
+    font-size: 15px;
+}
