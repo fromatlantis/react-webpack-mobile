@@ -39,14 +39,13 @@ const request = axios.create({
     baseURL,
     timeout: 15000,
 })
-const token = ''
+
 // 请求拦截器
 request.interceptors.request.use(
     config => {
         // 在请求发送之前做一些事
-        if (token) {
-            config.headers.Authorization = 'Bearer ' + token // 让每个请求携带token
-        }
+        config.baseURL = window.tukit.baseUrl ? `${window.tukit.baseUrl}:8804/houzai` : '/'
+        config.headers['Auth-Token'] = window.tukit.token || '47c05bec-cbe6-45f4-856b-219d144dac99'
         store.dispatch(actions('complate')(false))
         return config
     },
@@ -72,10 +71,7 @@ request.interceptors.response.use(
  */
 export default ({ type = 'get', url, data = {}, contentType = 'application/json' }) => {
     type = type.toLocaleLowerCase()
-    let postData = {},
-        config = {
-            headers: { 'Content-Type': contentType },
-        }
+    let postData = {}
     // 数据格式化，传过来的data均为json
     if (type === 'post') {
         postData.params = data
@@ -87,7 +83,7 @@ export default ({ type = 'get', url, data = {}, contentType = 'application/json'
         }
         postData = formData
     }
-    return request[type](url, postData, config)
+    return request[type](url, postData)
         .then(response => {
             if (response.data && response.data.code !== 1000) {
                 message.error(response.data.message)
@@ -95,6 +91,7 @@ export default ({ type = 'get', url, data = {}, contentType = 'application/json'
             return response.data || {}
         })
         .catch(error => {
+            alert(error)
             const { status, statusText } = error.response
             const errortext = codeMessage[status] || statusText
             //const { dispatch } = store;

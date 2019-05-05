@@ -48,5 +48,6 @@ export default auths => {
         }
         return true
     })
-    return allRoutes.filter(route => !route.role || auths.includes(route.role))
+    return allRoutes
+    //return allRoutes.filter(route => !route.role || auths.includes(route.role))
 }

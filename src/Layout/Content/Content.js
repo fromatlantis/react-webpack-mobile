@@ -7,11 +7,11 @@ import routes from '../../routes/routes'
 
 class Content extends Component {
     render() {
-        const { auths } = this.props
-        const filterRoutes = routes(auths)
+        // const { auths } = this.props
+        // const filterRoutes = routes(auths)
         return (
             <Switch>
-                {filterRoutes.map((item, index) => {
+                {routes().map((item, index) => {
                     return (
                         <Route
                             exact

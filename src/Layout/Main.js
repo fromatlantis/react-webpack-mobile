@@ -20,7 +20,7 @@ class Main extends Component {
     }
     render() {
         let { user } = this.props
-        if (user) {
+        if (user && user.name) {
             return <Content auths={this.props.auths} />
         } else {
             // 获取用户信息前添加loading效果

@@ -12,7 +12,7 @@
                 window.ReactNativeWebView.postMessage(JSON.stringify(options))
             } else {
                 // 本地调试
-                window.postMessage('iamlocal')
+                window.postMessage('iamlocal','*')
             }
         },
         _CLOSE: () => {
@@ -21,14 +21,14 @@
         _MORE: () => {
             tukit._EMIT('more')
         },
-        ready: (callback, config = {}) => {
-            tukit._EMIT('config', config)
+        ready: (callback, config) => {
+            config && tukit._EMIT('config', config)
             window.onmessage = message => {
                 if (message.data === 'iamready') {
                     tukit.user = JSON.parse(tukit.user)
                     callback()
-                    !config.header && renderHeaderRight()
-                }else if(message.data === 'iamlocal'){
+                    config && !config.header && renderHeaderRight()
+                } else if (message.data === 'iamlocal') {
                     callback()
                 }
             }
