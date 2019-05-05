@@ -12,7 +12,7 @@
                 window.ReactNativeWebView.postMessage(JSON.stringify(options))
             } else {
                 // 本地调试
-                window.postMessage('iamlocal','*')
+                window.postMessage('iamlocal', '*')
             }
         },
         _CLOSE: () => {
@@ -32,6 +32,16 @@
                     callback()
                 }
             }
+            // 兼容安卓
+            document.addEventListener('message', message => {
+                if (message.data === 'iamready') {
+                    tukit.user = JSON.parse(tukit.user)
+                    callback()
+                    !config.header && renderHeaderRight()
+                } else if (message.data === 'iamlocal') {
+                    callback()
+                }
+            });
         },
         getUserInfo: options => {
             tukit._EMIT('getUserInfo', options)
