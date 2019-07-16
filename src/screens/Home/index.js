@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { TabBar } from 'antd-mobile'
-import { FlatList } from '../../components'
+import { FlatList, Header, Container, Content } from '../../components'
 
 class Home extends Component {
     state = {
@@ -39,8 +39,8 @@ class Home extends Component {
             </div>
         )
     }
-
     render() {
+        const { user } = this.props
         return (
             <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
                 <TabBar
@@ -82,11 +82,12 @@ class Home extends Component {
                             })
                         }}
                         data-seed="logId">
-                        <FlatList
-                            clickItem={() => {
-                                this.props.push('demo')
-                            }}
-                        />
+                        <Container>
+                            <Header noBack title={user.name} />
+                            <Content>
+                                <FlatList />
+                            </Content>
+                        </Container>
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -178,6 +179,7 @@ class Home extends Component {
 const mapStateToProps = state => {
     return {
         router: state.router,
+        user: state.authUser.user,
     }
 }
 const mapDispatchToProps = dispatch => {

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { message } from 'antd'
+import { Toast } from 'antd-mobile'
 import { store } from '../index'
 //import { replace } from 'connected-react-router'
 import { actions } from 'reduxDir/loading'
@@ -36,7 +36,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // create an axios instance
 const request = axios.create({
-    baseURL,
+    // baseURL,
     timeout: 15000,
 })
 
@@ -44,8 +44,6 @@ const request = axios.create({
 request.interceptors.request.use(
     config => {
         // 在请求发送之前做一些事
-        config.baseURL = window.tukit.baseUrl ? `${window.tukit.baseUrl}:8804/houzai` : '/'
-        config.headers['Auth-Token'] = window.tukit.token || '47c05bec-cbe6-45f4-856b-219d144dac99'
         store.dispatch(actions('complate')(false))
         return config
     },
@@ -86,7 +84,7 @@ export default ({ type = 'get', url, data = {}, contentType = 'application/json'
     return request[type](url, postData)
         .then(response => {
             if (response.data && response.data.code !== 1000) {
-                message.error(response.data.message)
+                Toast.fail(response.data.message)
             }
             return response.data || {}
         })

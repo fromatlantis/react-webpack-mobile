@@ -18,21 +18,41 @@ class Header extends PureComponent {
         }
     }
     render() {
-        return (
-            <NavBar
-                style={{ paddingTop: `${this.state.headerPadding}px`, boxSizing: 'content-box' }}
-                mode="dark"
-                icon={
-                    <Icon
-                        type="left"
-                        onClick={() => {
-                            this.props.goBack()
-                        }}
-                    />
-                }>
-                {this.props.title}
-            </NavBar>
-        )
+        const headerPadding = window.tukit.safeArea ? window.tukit.safeArea.topInset : 20
+        const { style, noBack } = this.props
+        if (noBack) {
+            return (
+                <NavBar
+                    style={{
+                        paddingTop: `${headerPadding}px`,
+                        boxSizing: 'content-box',
+                        ...style,
+                    }}
+                    mode="dark">
+                    {this.props.title}
+                </NavBar>
+            )
+        } else {
+            return (
+                <NavBar
+                    style={{
+                        paddingTop: `${headerPadding}px`,
+                        boxSizing: 'content-box',
+                        ...style,
+                    }}
+                    mode="dark"
+                    icon={
+                        <Icon
+                            type="left"
+                            onClick={() => {
+                                this.props.goBack()
+                            }}
+                        />
+                    }>
+                    {this.props.title}
+                </NavBar>
+            )
+        }
     }
 }
 Header.propTypes = {

@@ -2,6 +2,21 @@
     if (!window.tukit) {
         window.tukit = {}
     }
+    const onReady = (callback,config,message) => {
+        try {
+            if (message.data === 'iamready') {
+                if (typeof tukit.user === 'string') {
+                    tukit.user = JSON.parse(tukit.user)
+                }
+                callback()
+                config && !config.header && renderHeaderRight()
+            } else if (message.data === 'iamlocal') {
+                callback()
+            }
+        } catch (e) {
+            alert(e)
+        }
+    }
     Object.assign(window.tukit, {
         veresion: '1.0.2',
         _CBS: {},
@@ -24,23 +39,11 @@
         ready: (callback, config) => {
             config && tukit._EMIT('config', config)
             window.onmessage = message => {
-                if (message.data === 'iamready') {
-                    tukit.user = JSON.parse(tukit.user)
-                    callback()
-                    config && !config.header && renderHeaderRight()
-                } else if (message.data === 'iamlocal') {
-                    callback()
-                }
+                onReady(callback,config,message)
             }
             // 兼容安卓
             document.addEventListener('message', message => {
-                if (message.data === 'iamready') {
-                    tukit.user = JSON.parse(tukit.user)
-                    callback()
-                    !config.header && renderHeaderRight()
-                } else if (message.data === 'iamlocal') {
-                    callback()
-                }
+                onReady(callback,config,message)
             });
         },
         getUserInfo: options => {
@@ -63,11 +66,11 @@
         headerRight.innerHTML = `
             <div style="background:rgba(255,255,255,.75);height:33px;border-radius:19px;display:flex;align-items:center;border:1px solid rgba(111,111,111,.1);box-sizing: border-box;">
                 <div onclick="tukit._MORE()" style="padding:0 0 0 12px;display:flex;align-items:center;">
-                    <img src="http://www.noprint.live/assets/more.png" style="height:19px;"/>
+                    <img src="https://www.hzpark.com/image/more.png" style="height:19px;"/>
                 </div>
-                <img src="http://www.noprint.live/assets/divider.png" style="height:16px;margin:0 3px;"/>
+                <img src="https://www.hzpark.com/image/divider.png" style="height:16px;margin:0 3px;"/>
                 <div onclick="tukit._CLOSE()" style="padding:0 12px 0 0;display:flex;align-items:center;">
-                    <img src="http://www.noprint.live/assets/close.png" style="height:19px;"/>
+                    <img src="https://www.hzpark.com/image/close.png" style="height:19px;"/>
                 </div>
             </div>`
         document.body.appendChild(headerRight)

@@ -147,34 +147,31 @@ export default class FlatList extends PureComponent {
             )
         }
         return (
-            <Container>
-                <Header title="123" />
-                <ListView
-                    key={this.state.useBodyScroll ? '0' : '1'}
-                    ref={el => (this.lv = el)}
-                    dataSource={this.state.dataSource}
-                    renderHeader={() => <span>Pull to refresh</span>}
-                    renderFooter={() => (
-                        <div style={{ padding: 30, textAlign: 'center' }}>
-                            {this.state.isLoading ? 'Loading...' : 'Loaded'}
-                        </div>
-                    )}
-                    renderRow={row}
-                    renderSeparator={separator}
-                    //useBodyScroll={this.state.useBodyScroll}
-                    style={{
-                        flex: 1,
-                    }}
-                    pullToRefresh={
-                        <PullToRefresh
-                            refreshing={this.state.refreshing}
-                            onRefresh={this.onRefresh}
-                        />
-                    }
-                    onEndReached={this.onEndReached}
-                    pageSize={5}
-                />
-            </Container>
+            // <Container>
+            //     <Header title="123" />
+            <ListView
+                key={this.state.useBodyScroll ? '0' : '1'}
+                ref={el => (this.lv = el)}
+                dataSource={this.state.dataSource}
+                renderHeader={() => <span>Pull to refresh</span>}
+                renderFooter={() => (
+                    <div style={{ padding: 30, textAlign: 'center' }}>
+                        {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                    </div>
+                )}
+                renderRow={row}
+                renderSeparator={separator}
+                //useBodyScroll={this.state.useBodyScroll}
+                style={{
+                    flex: 1,
+                }}
+                pullToRefresh={
+                    <PullToRefresh refreshing={this.state.refreshing} onRefresh={this.onRefresh} />
+                }
+                onEndReached={this.onEndReached}
+                pageSize={5}
+            />
+            // </Container>
         )
     }
 }

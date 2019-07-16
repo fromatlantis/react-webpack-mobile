@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import axios from 'axios'
 import Main from './Main'
 import { FullScreenLoading } from '../components'
 
@@ -19,6 +19,12 @@ export default class Layout extends Component {
             headerBackground: '#fff',
         }
         window.tukit.ready(() => {
+            // axios全局设置
+            axios.defaults.baseURL = window.tukit.baseUrl
+                ? `${window.tukit.baseUrl}:8804/houzai`
+                : '/'
+            axios.defaults.headers['Auth-Token'] =
+                window.tukit.token || '3039ca7c-5c1e-4ed9-86a2-f64a38cb2a41'
             this.setState({ tukit: true })
         }, config)
     }

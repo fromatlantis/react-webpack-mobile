@@ -77,6 +77,7 @@ function getClientEnvironment(publicUrl) {
         // This should only be used as an escape hatch. Normally you would put
         // images into the `src` and `import` them in code to get their paths.
         PUBLIC_URL: publicUrl,
+        // 区分测试环境和生产环境
         CONFIG_ENV: process.env.CONFIG_ENV || 'development',
       }
     );
