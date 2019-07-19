@@ -24,7 +24,7 @@ export default class Layout extends Component {
                 ? `${window.tukit.baseUrl}:8804/houzai`
                 : '/'
             axios.defaults.headers['Auth-Token'] =
-                window.tukit.token || 'b95d71d1-cca3-464a-995d-adcbad49b62c'
+                window.tukit.token || '2ec68990-cf5f-4ea3-a05c-801e55111828'
             this.setState({ tukit: true })
         }, config)
     }

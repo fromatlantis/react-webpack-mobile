@@ -1,0 +1,15 @@
+.root {
+    background-color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    line-height: 23px;
+    border-radius: 5px;
+    & .title {
+        color: rgba(0,0,0,0.45);
+    }
+    & .value {
+        color: rgba(0,0,0,0.85);
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
