@@ -19,13 +19,16 @@ export default class Layout extends Component {
             headerBackground: '#fff',
         }
         window.tukit.ready(() => {
+            this.setState({ tukit: true })
             // axios全局设置
             axios.defaults.baseURL = window.tukit.baseUrl
                 ? `${window.tukit.baseUrl}:8804/houzai`
                 : '/'
             axios.defaults.headers['Auth-Token'] =
-                window.tukit.token || '2ec68990-cf5f-4ea3-a05c-801e55111828'
-            this.setState({ tukit: true })
+                window.tukit.token || '186b2110-9737-425e-8dc4-bacbcfe631ec'
+            // // 真机-本地
+            // axios.defaults.baseURL = '/'
+            // axios.defaults.headers['Auth-Token'] = '186b2110-9737-425e-8dc4-bacbcfe631ec'
         }, config)
     }
     render() {

@@ -49,6 +49,37 @@
         getUserInfo: options => {
             tukit._EMIT('getUserInfo', options)
         },
+        QRCode: (options) => { //扫描二维码
+            tukit._EMIT('QRCode', options)
+        },
+        getGeolocation: (options) => { //获取地理位置
+            tukit._EMIT('getGeolocation', options)
+        },
+        getSystemInfo: (options) => { //获取系统信息
+            tukit._EMIT('getSystemInfo', options)
+        },
+        WXShare: (options) => { //微信分享（请使用Share代替，已经废弃）
+        },
+        QQShare: (options) => { //QQ分享（请使用Share代替，已经废弃）
+        },
+        Share: (options) => { //分享
+            tukit._EMIT('Share', options)
+        },
+        selectPictures: (options) => { //选择图片
+            tukit._EMIT('selectPictures', options)
+        },
+        phonecall: (options) => { //拨打电话
+            tukit._EMIT('phonecall', options)
+        },
+        textWithoutEncoding: (options) => { //发送短信
+            tukit._EMIT('textWithoutEncoding', options)
+        },
+        email: (options) => { //发送邮件
+            tukit._EMIT('email', options)
+        },
+        web: (options) => { //打开页面
+            tukit._EMIT('web', options)
+        },
     })
     const renderHeaderRight = () => {
         // 右上角
