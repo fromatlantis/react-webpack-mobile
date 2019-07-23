@@ -19,7 +19,6 @@ export default class Layout extends Component {
             headerBackground: '#fff',
         }
         window.tukit.ready(() => {
-            this.setState({ tukit: true })
             // axios全局设置
             axios.defaults.baseURL = window.tukit.baseUrl
                 ? `${window.tukit.baseUrl}:8804/houzai`
@@ -29,6 +28,8 @@ export default class Layout extends Component {
             // // 真机-本地
             // axios.defaults.baseURL = '/'
             // axios.defaults.headers['Auth-Token'] = '186b2110-9737-425e-8dc4-bacbcfe631ec'
+            // ！！！重要下面代码一定要放在最后
+            this.setState({ tukit: true })
         }, config)
     }
     render() {
