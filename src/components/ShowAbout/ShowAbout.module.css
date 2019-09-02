@@ -1,0 +1,52 @@
+.ShowAboutBox{
+    background: #fff;
+    padding: 20px 20px 21px;
+    margin-bottom: 1px;
+    align-items: flex-start;
+    display: flex;
+    position: relative;
+}
+.show{
+    display: inline-block;
+    line-height: 20px;
+    font-size: 14px;
+    color: #959595;
+    font-family: PingFangSC-Regular, sans-serif;
+    width: 60px;
+}
+.about{
+    display: inline-block;
+    margin-left: 30px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #000000;
+    font-family: PingFangSC-Regular, sans-serif;
+}
+.timeout{
+    width: 40px;
+    height: 20px;
+    color: #E7242F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(231,36,47,0.2);
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    line-height: 15px;
+    font-size: 11px;
+    font-family: PingFangSC-Regular, sans-serif;
+    border-radius: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

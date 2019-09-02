@@ -17,7 +17,7 @@
 - "redux": "^4.0.1",
 - "webpack": "4.19.1"
 ### 运行项目
-1. `git clone https://github.com/fromatlantis/react-webpack.git`
+1. `git clone https://github.com/fromatlantis/react-webpack-mobile.git`
 2. `cd react-webpack`
 3. `yarn isntall`
 4. `yarn start`

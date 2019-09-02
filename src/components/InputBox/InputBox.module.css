@@ -1,0 +1,82 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  margin-bottom: 1px;
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 20px;
+  width: 70px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-weight: 400;
+  color: rgba(48, 48, 48, 1);
+  line-height: 20px;
+}
+
+.value {
+  margin-left: 0px;
+  margin-right: 20px;
+  font-size: 14px;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-weight: 400;
+  color: rgba(48, 48, 48, 1);
+  line-height: 20px;
+  color: #303030;
+  width: 100%;
+  border-width: 0px;
+}
+
+.valueBox {
+  display: flex;
+  flex: 1;
+}
+
+.value::-webkit-input-placeholder { /* WebKit browsers */
+
+  font-size: 14px;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-weight: 400;
+  color: rgba(149, 149, 149, 1);
+  line-height: 20px;
+}
+
+.value:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+
+  font-size: 14px;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-weight: 400;
+  color: rgba(149, 149, 149, 1);
+  line-height: 20px;
+}
+
+.value::-moz-placeholder { /* Mozilla Firefox 19+ */
+
+  font-size: 14px;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-weight: 400;
+  color: rgba(149, 149, 149, 1);
+  line-height: 20px;
+}
+
+.value:-ms-input-placeholder { /* Internet Explorer 10+ */
+
+  font-size: 14px;
+  font-family: PingFangSC-Regular, sans-serif;
+  font-weight: 400;
+  color: rgba(149, 149, 149, 1);
+  line-height: 20px;
+} 
+
+
+
+
+
+
+
+
+
+
+
