@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { TabBar } from 'antd-mobile'
-import { FlatList, Header, Container, Content, Screen } from '../../components'
+import { FlatList, Header, Container, Content } from '../../components'
 
 class Home extends Component {
     state = {
