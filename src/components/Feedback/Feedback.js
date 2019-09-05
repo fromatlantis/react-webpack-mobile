@@ -15,7 +15,7 @@ export default class Feedback extends PureComponent {
             message: '',
         }
     }
-    showFeedback(icon, message, time = 3000) {
+    showFeedback(icon, message, time = 3000, back) {
         let that = this
         this.setState({
             icon,
@@ -28,9 +28,12 @@ export default class Feedback extends PureComponent {
                 message: '',
                 show: false,
             })
+            if (back) {
+                back()
+            }
         }, time)
     }
-    warning(message, time = 3000) {
+    warning(message, time = 3000, back) {
         let that = this
         this.setState({
             icon: warningImg,
@@ -43,9 +46,12 @@ export default class Feedback extends PureComponent {
                 message: '',
                 show: false,
             })
+            if (back) {
+                back()
+            }
         }, time)
     }
-    time(message, time = 3000) {
+    time(message, time = 3000, back) {
         let that = this
         this.setState({
             icon: timeImg,
@@ -58,9 +64,12 @@ export default class Feedback extends PureComponent {
                 message: '',
                 show: false,
             })
+            if (back) {
+                back()
+            }
         }, time)
     }
-    error(message, time = 3000) {
+    error(message, time = 3000, back) {
         let that = this
         this.setState({
             icon: errorImg,
@@ -73,9 +82,12 @@ export default class Feedback extends PureComponent {
                 message: '',
                 show: false,
             })
+            if (back) {
+                back()
+            }
         }, time)
     }
-    success(message, time = 3000) {
+    success(message, time = 3000, back) {
         let that = this
         this.setState({
             icon: successImg,
@@ -88,6 +100,9 @@ export default class Feedback extends PureComponent {
                 message: '',
                 show: false,
             })
+            if (back) {
+                back()
+            }
         }, time)
     }
     render() {
@@ -112,6 +127,13 @@ export default class Feedback extends PureComponent {
 // this.feedback.time('时间未到')
 // this.feedback.error('错误')
 // this.feedback.success('成功')
+
+// 带消失回调
+// this.feedback.showFeedback(图片,'警告')
+// this.feedback.warning('警告',3000,back)
+// this.feedback.time('时间未到',3000,back)
+// this.feedback.error('错误',3000,back)
+// this.feedback.success('成功',3000,back)
 
 // <Feedback
 //     ref={feedback => {

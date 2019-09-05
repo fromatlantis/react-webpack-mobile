@@ -14,10 +14,29 @@ export default class DatePickerBox extends PureComponent {
         }
     }
     componentDidMount() {
-        if (this.props.value) {
-            this.setState({
-                value: this.props.value,
-            })
+        let { type = 'yyyy-mm-dd', value } = this.props
+        console.log(type, value)
+        if (value) {
+            if (type == 'yyyy-mm-dd') {
+                this.setState({
+                    value: value,
+                })
+            } else {
+                let time = new Date(value - 0)
+                let FullYear = new Date(time).getFullYear()
+                let Month = new Date(time).getMonth() - 0 + 1
+                if (Month < 10) {
+                    Month = '0' + Month
+                }
+                let Day = new Date(time).getDate()
+                if (Day < 10) {
+                    Day = '0' + Day
+                }
+                let showTime = FullYear + '-' + Month + '-' + Day
+                this.setState({
+                    value: showTime,
+                })
+            }
         }
     }
     //子组件改变值
@@ -30,7 +49,8 @@ export default class DatePickerBox extends PureComponent {
     }
     determine() {
         let { Time } = this.state
-        console.log(Time, '-------------')
+        let { type = 'yyyy-mm-dd' } = this.props
+
         let FullYear = new Date(Time).getFullYear()
         let Month = new Date(Time).getMonth() - 0 + 1
         let Day = new Date(Time).getDate()
@@ -40,7 +60,11 @@ export default class DatePickerBox extends PureComponent {
             show: false,
         })
         if (this.props.onChange) {
-            this.props.onChange(value)
+            if (type == 'yyyy-mm-dd') {
+                this.props.onChange(value)
+            } else {
+                this.props.onChange(Date.parse(new Date(value)))
+            }
         }
     }
     setshow() {
@@ -127,7 +151,9 @@ export default class DatePickerBox extends PureComponent {
     placeholder="请选择日期"
 />
 
-
+type :
+yyyy-mm-dd
+s
 
 
 

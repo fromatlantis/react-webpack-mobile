@@ -307,6 +307,7 @@ export default class Screen extends PureComponent {
         this.setState({
             propsData,
             showScreenBrueOne: choice,
+            showScreenBrue: false,
             showScreen,
             ok: !this.state.ok,
         })
@@ -328,6 +329,7 @@ export default class Screen extends PureComponent {
         this.setState({
             propsData,
             showScreenBrue: choice,
+            showScreenBrueOne: false,
             showScreen,
             ok: !this.state.ok,
         })
@@ -525,8 +527,30 @@ export default class Screen extends PureComponent {
     }
     change() {
         let that = this
+        let { onchange, index = false } = this.props
+        let { propsData } = this.state
         setTimeout(() => {
-            that.props.onchange(this.state.propsData)
+            if (index) {
+                let newpropsData = [...propsData]
+                for (let i in newpropsData) {
+                    if (newpropsData[i].index) {
+                        let newValue = []
+                        let oldValue = newpropsData[i].value.split(',')
+                        for (let m in oldValue) {
+                            for (let n in newpropsData[i].data) {
+                                if (oldValue[m] == newpropsData[i].data[n]) {
+                                    newValue.push(newpropsData[i].index[n])
+                                }
+                            }
+                        }
+                        newValue = newValue.join(',')
+                        newpropsData[i].newValue = newValue
+                    }
+                }
+                onchange(newpropsData)
+            } else {
+                onchange(propsData)
+            }
         }, 0)
     }
     render() {
@@ -621,9 +645,12 @@ name：渲染名称
 data：复选，选项
 value：结果。
 choice：复选框是否展开
+index: (['abc1','abc2','abc3'])对应的index 如果Screen有index参数 那么data里面有index会返回新的参数newValue 'abc1,abc2,abc3
 操作回调，会返回整个
 新结果是   data
  <Screen
+    index={true}
+    onchange={data => console.log(data)}
     data={[
         {
             type: 0,
