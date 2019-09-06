@@ -75,4 +75,58 @@ const DESEncrypt = (message, key = 'TUSMART_HOUZAI') => {
     })
     return encrypted.ciphertext.toString(CryptoJS.enc.Base64)
 }
-export { getBase64, getPinyin, redirectLogin, getUrlParams, DESEncrypt, DESDecrypt }
+
+const before = time => {
+    //传入时间戳
+    let setTime = time - 0
+    let newTime = Date.parse(new Date())
+    let timeDifference = (newTime - setTime) / 1000
+    let show = ''
+    if (timeDifference < 60) {
+        show = '刚刚'
+    } else {
+        timeDifference = Math.floor(timeDifference / 60)
+        if (timeDifference < 60) {
+            show = timeDifference + '分钟前'
+        } else {
+            timeDifference = Math.floor(timeDifference / 60)
+            if (timeDifference < 24) {
+                show = timeDifference + '小时前'
+            } else {
+                timeDifference = Math.floor(timeDifference / 24)
+                if (timeDifference < 30) {
+                    show = timeDifference + '天前'
+                } else {
+                    timeDifference = Math.floor(timeDifference / 30)
+                    if (timeDifference < 2) {
+                        show = '上个月'
+                    } else {
+                        let year = new Date(time).getFullYear()
+                        let month = new Date(time).getMonth() - 0 + 1
+                        if (month < 10) {
+                            month = '0' + month
+                        }
+                        let date = new Date(time).getDate()
+                        if (date < 10) {
+                            date = '0' + date
+                        }
+                        show = year + '-' + month + '-' + date
+                    }
+                }
+            }
+        }
+    }
+    return show
+}
+// {before(1561000000000)}
+/**
+ *
+ * 一分钟内  显示刚刚
+ * 一小时内  显示多少分前
+ * 一天内    显示多少小时前
+ * 30天内    显示多少天前
+ * 60天内    显示上个月
+ * 再之前    显示年月日
+ *
+ */
+export { getBase64, getPinyin, redirectLogin, getUrlParams, DESEncrypt, DESDecrypt, before }
