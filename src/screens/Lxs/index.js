@@ -16,8 +16,8 @@ class Home extends Component {
                 index: 'inputbox',
                 props: {
                     must: true,
-                    title: 'title1',
-                    placeholder: 'inputbox',
+                    title: 'title',
+                    placeholder: '请填写title',
                 },
             },
             {
@@ -123,7 +123,7 @@ class Home extends Component {
             singleElection: '',
             andUnion: '',
             datePickerBox: '',
-            logoBox: '',
+            logoBox: 'https://www.baidu.com/img/bd_logo1.png',
         },
     }
     render() {
@@ -132,6 +132,7 @@ class Home extends Component {
             <Container>
                 <Header title="李小生" />
                 <Content>
+                    <p onClick={() => this.forms.getFormsState()}>检测Forms,并获取数据</p>
                     <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
                 </Content>
             </Container>

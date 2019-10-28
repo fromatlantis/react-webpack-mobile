@@ -34,6 +34,7 @@ export default class Forms extends PureComponent {
                 }
             }
         }
+        console.log(this.state.stateForms)
         return this.state.stateForms
     }
     componentDidMount() {
@@ -253,7 +254,13 @@ export default class Forms extends PureComponent {
     <p onClick={() => this.forms.getFormsState()}>getFormsState</p>
     <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
 
-
+    支持 ： 
+    输入款 InputBox
+    单选 SingleElection
+    多级选择 AndUnion
+    复选 Label
+    日期 DatePickerBox
+    图片上传 LogoBox
  * 
  * 
  */

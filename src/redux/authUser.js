@@ -30,7 +30,7 @@ const model = {
                     } else {
                         yield put(actions('loginSuccess')(res.data))
                     }
-                    yield put(replace('/home'))
+                    // yield put(replace('/home'))
                 }
             },
         },
@@ -85,10 +85,10 @@ const model = {
                     })
                     if (res.data) {
                         yield put(actions('loginSuccess')(res.data))
-                        yield put(replace('/home'))
+                        // yield put(replace('/home'))
                         //yield put(actions('getAuthoritiesByUser')(res.data.user.id))
                     } else {
-                        yield put(replace('/home'))
+                        // yield put(replace('/home'))
                     }
                 } catch (err) {}
             },

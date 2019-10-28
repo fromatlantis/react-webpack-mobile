@@ -136,7 +136,7 @@ export default class SingleElection extends PureComponent {
                             <p className={styles.showabnormal}>异常</p>
                         ) : null}
                         {this.showChoiceIndex()}
-                        <p className={styles.placeholder}>{placeholder}</p>
+                        {ChoiceIndex ? null : <p className={styles.placeholder}>{placeholder}</p>}
                         <img src={arrow} alt="" />
                     </div>
                 </div>
