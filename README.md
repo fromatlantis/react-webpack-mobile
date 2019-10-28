@@ -76,3 +76,15 @@
     - 推送到远程 `git push origin v0.3.0`
     - 删除本地tag `git tag -d v0.3.0`
     - 删除远程tag `git push origin --delete v0.3.0`
+
+
+### 更新日志
+#### 2019-10-28
+
+    1. 添加demo页面。方便查看组件效果。 
+        http://localhost:3000/#/lxs
+    2. 添加Forms 组件。
+    3. 组件index页面，注释说明修改。
+        Label 单选 -> 复选
+    4. 添加必填
+        AndUnion、DatePickerBox

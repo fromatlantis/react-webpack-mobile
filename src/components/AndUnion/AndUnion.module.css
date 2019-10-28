@@ -5,13 +5,16 @@
 }
 
 .title {
-  width: 56px;
   font-size: 14px;
-  font-family: PingFangSC-Regular, sans-serif;
+  font-family: PingFangSC;
   font-weight: 400;
   color: rgba(48, 48, 48, 1);
   line-height: 20px;
+  display: flex;
+  width: 70px;
   margin: 20px;
+  flex-shrink: 0;
+
 }
 
 .placeholder {

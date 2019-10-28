@@ -15,6 +15,14 @@ const routes = [
             loading: FullScreenLoading,
         }),
     },
+
+    {
+        path: '/lxs',
+        component: Loadable({
+            loader: () => import(/* webpackChunkName: "lxs" */ '../screens/Lxs'),
+            loading: FullScreenLoading,
+        }),
+    },
     {
         path: '/demo',
         component: Loadable({

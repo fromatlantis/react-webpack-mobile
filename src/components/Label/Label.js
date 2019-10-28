@@ -87,13 +87,13 @@ export default class Label extends PureComponent {
             }
             if (b) {
                 item.push(
-                    <div className={styles.tag} onClick={() => this.setTag(data[i], !b)}>
+                    <div className={styles.tag} onClick={() => this.setTag(data[i], !b)} key={i}>
                         <p>{data[i]}</p>
                     </div>,
                 )
             } else {
                 item.push(
-                    <div className={styles.tagone} onClick={() => this.setTag(data[i], !b)}>
+                    <div className={styles.tagone} onClick={() => this.setTag(data[i], !b)} key={i}>
                         <p>{data[i]}</p>
                     </div>,
                 )

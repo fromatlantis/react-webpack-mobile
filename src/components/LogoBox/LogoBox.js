@@ -71,7 +71,6 @@ export default class LogoBox extends PureComponent {
                             <img src={logoadd} alt="" srcSet="" />
                         </div>
                     )}
-
                     <p className={styles.about}>{about}</p>
                 </div>
             </div>

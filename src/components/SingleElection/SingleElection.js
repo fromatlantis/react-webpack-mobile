@@ -22,6 +22,7 @@ export default class SingleElection extends PureComponent {
         }
         this.setState({
             options,
+            ChoiceIndex: this.props.value,
         })
     }
     lookChoice() {
@@ -119,7 +120,7 @@ export default class SingleElection extends PureComponent {
         }
     }
     render() {
-        let { showColor, show, type, must } = this.props
+        let { showColor, show, type, must, placeholder } = this.props
         let { about, ChoiceIndex, Choice, Choicenum } = this.state
         return (
             <div>
@@ -128,12 +129,14 @@ export default class SingleElection extends PureComponent {
                         {show}
                         {must ? <span>*</span> : null}
                     </p>
+
                     <div className={styles.center}>
                         {ChoiceIndex == 'normal' ? <p className={styles.shownormal}>正常</p> : null}
                         {ChoiceIndex == 'abnormal' ? (
                             <p className={styles.showabnormal}>异常</p>
                         ) : null}
                         {this.showChoiceIndex()}
+                        <p className={styles.placeholder}>{placeholder}</p>
                         <img src={arrow} alt="" />
                     </div>
                 </div>

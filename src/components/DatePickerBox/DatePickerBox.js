@@ -15,7 +15,6 @@ export default class DatePickerBox extends PureComponent {
     }
     componentDidMount() {
         let { type = 'yyyy-mm-dd', value } = this.props
-        console.log(type, value)
         if (value) {
             if (type == 'yyyy-mm-dd') {
                 this.setState({
@@ -44,7 +43,6 @@ export default class DatePickerBox extends PureComponent {
         this.setState({ value })
     }
     onChange = Time => {
-        console.log('子组件', Time)
         this.setState({ Time })
     }
     determine() {
@@ -82,7 +80,10 @@ export default class DatePickerBox extends PureComponent {
         let { value, show, Time, minDate, maxDate } = this.state
         return (
             <div className={styles.box}>
-                <p className={styles.title}>{title}</p>
+                <p className={styles.title}>
+                    {title}
+                    {must ? <span style={{ color: 'red' }}>*</span> : null}
+                </p>
                 {value ? (
                     <p onClick={() => this.setshow()} className={styles.value}>
                         {value}

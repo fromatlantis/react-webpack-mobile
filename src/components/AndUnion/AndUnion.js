@@ -23,11 +23,39 @@ export default class AndUnion extends PureComponent {
             had,
         })
     }
+    getdataItem(all, index) {
+        for (let i in all) {
+            if (index.length == 1) {
+                return all
+            } else {
+                for (let j in index) {
+                    if (index[j] == all[i].value) {
+                        let newindex = []
+                        for (let i in index) {
+                            if (i != 0) {
+                                newindex.push(index[i])
+                            }
+                        }
+                        return this.getdataItem(all[i].children, newindex)
+                    }
+                }
+            }
+        }
+    }
     componentDidMount() {
         let data = this.props.data
         let dataItem = this.props.data
-
-        this.setState({ data, dataItem })
+        let value = this.props.value
+        let valueData = value.split(',')
+        let hadIndex = valueData.length - 1
+        let had = []
+        if (hadIndex) {
+            for (let i = 0; i < hadIndex; i++) {
+                had.push(valueData[i])
+            }
+        }
+        dataItem = this.getdataItem(data, valueData)
+        this.setState({ data, dataItem, hadIndex, had, value })
     }
     getvalue() {
         let { value, data } = this.state
@@ -56,7 +84,6 @@ export default class AndUnion extends PureComponent {
                 }
             }
         }
-        console.log(returnvalue)
         return returnvalue
     }
     items() {
@@ -68,6 +95,7 @@ export default class AndUnion extends PureComponent {
             if (choiceItem == dataItem[i].value) {
                 item.push(
                     <p
+                        key={i}
                         className={`${styles.choiceItem} ${styles.blueChoiceItem}`}
                         onClick={() => this.setChoice(dataItem[i])}>
                         <img
@@ -87,7 +115,10 @@ export default class AndUnion extends PureComponent {
                 )
             } else {
                 item.push(
-                    <p className={styles.choiceItem} onClick={() => this.setChoice(dataItem[i])}>
+                    <p
+                        key={i}
+                        className={styles.choiceItem}
+                        onClick={() => this.setChoice(dataItem[i])}>
                         {dataItem[i].value}
                     </p>,
                 )
@@ -96,6 +127,7 @@ export default class AndUnion extends PureComponent {
         return item
     }
     setChoice(obj) {
+        let that = this
         let showMask = true
         let { hadIndex, had, dataItem, data, value } = this.state
         let b = true
@@ -131,6 +163,13 @@ export default class AndUnion extends PureComponent {
         }
         if (b) {
             value = had.join(',')
+        }
+        if (!showMask) {
+            if (this.props.onChange) {
+                setTimeout(() => {
+                    that.props.onChange(that.getvalue())
+                }, 0)
+            }
         }
         this.setState({
             hadIndex,
@@ -189,24 +228,27 @@ export default class AndUnion extends PureComponent {
         let { titles } = this.props
         for (let i in had) {
             items.push(
-                <p onClick={() => this.setHadIndex(had[i], i)} className={styles.blue}>
+                <p key={i} onClick={() => this.setHadIndex(had[i], i)} className={styles.blue}>
                     {had[i]}
                 </p>,
             )
         }
         if (had.length == hadIndex + 1) {
         } else {
-            items.push(<p>{titles[hadIndex]}</p>)
+            items.push(<p key={998}>{titles[hadIndex]}</p>)
         }
         return items
     }
     render() {
-        let { title, titles, placeholder } = this.props
+        let { title, titles, placeholder, must } = this.props
         let { value, data, hadIndex, had, showMask } = this.state
         return (
             <div className={styles.Box}>
                 <div onClick={() => this.openMask()} className={styles.showvalue}>
-                    <p className={styles.title}>{title}</p>
+                    <p className={styles.title}>
+                        {title}
+                        {must ? <span style={{ color: 'red' }}>*</span> : null}
+                    </p>
                     {value ? (
                         <p className={styles.value}>{value}</p>
                     ) : (
