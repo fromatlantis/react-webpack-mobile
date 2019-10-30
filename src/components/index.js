@@ -21,7 +21,7 @@ import AndUnion from './AndUnion/AndUnion' //多级选择  用户新增页面
 import Screen from './Screen/Screen' //多级筛选条件 用于列表页面
 import Tags from './Tags/Tags' // tag 标签展示 用户详情页面
 import Multiple from './Multiple/Multiple' //标签复选 用于新增页面
-import LogoBox from './LogoBox/LogoBox' //图片上传 用于新增页面
+// import LogoBox from './LogoBox/LogoBox' //图片上传 用于新增页面
 import DatePickerBox from './DatePickerBox/DatePickerBox' // 时间选择 用于新增页面
 import Submission from './Submission/Submission' //提交按钮 带阴影
 import Forms from './Forms/Forms' //尝试编写form 现支持组件：
@@ -51,7 +51,7 @@ export {
     AndUnion,
     Tags,
     Multiple,
-    LogoBox,
+    // LogoBox,
     DatePickerBox,
     Submission,
     Forms,

@@ -88,3 +88,8 @@
         Label 单选 -> 复选
     4. 添加必填
         AndUnion、DatePickerBox
+#### 2019-10-30
+
+    1. 添加组件Picture（图片上传，及查看）
+    2. Forms组件支持Picture组件
+    3. 取消LogoBox的引用，取消Forms对LogoBox的支持（代码暂时保留，后续版本逐步删除）

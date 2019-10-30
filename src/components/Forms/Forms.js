@@ -11,7 +11,7 @@ import {
     SingleElection,
     AndUnion,
     DatePickerBox,
-    LogoBox,
+    // LogoBox,
     Feedback,
     Picture,
 } from '../../components'
@@ -30,11 +30,13 @@ export default class Forms extends PureComponent {
         for (let i in data) {
             if (data[i].props.must) {
                 if (!stateForms[data[i].index]) {
-                    this.feedback.error(data[i].props.placeholder)
+                    let placeholder = data[i].props.placeholder || '请填写' + data[i].props.title
+                    this.feedback.error(placeholder)
                     return
                 }
             }
         }
+        console.log(this.state.stateForms)
         return this.state.stateForms
     }
     componentDidMount() {
@@ -115,19 +117,10 @@ export default class Forms extends PureComponent {
                         onChange={value => this.toSetState(data[i].index, value)}
                     />,
                 )
-            } else if (data[i].assembly == 'LogoBox') {
-                item.push(
-                    <LogoBox
-                        key={i}
-                        {...data[i].props}
-                        value={stateForms[data[i].index]}
-                        onChange={value => this.toSetState(data[i].index, value)}
-                    />,
-                )
             }
-            //  else if (data[i].assembly == 'Picture') {
+            // else if (data[i].assembly == 'LogoBox') {
             //     item.push(
-            //         <Picture
+            //         <LogoBox
             //             key={i}
             //             {...data[i].props}
             //             value={stateForms[data[i].index]}
@@ -135,6 +128,16 @@ export default class Forms extends PureComponent {
             //         />,
             //     )
             // }
+            else if (data[i].assembly == 'Picture') {
+                item.push(
+                    <Picture
+                        key={i}
+                        {...data[i].props}
+                        value={stateForms[data[i].index]}
+                        onChange={value => this.toSetState(data[i].index, value)}
+                    />,
+                )
+            }
         }
         return item
     }

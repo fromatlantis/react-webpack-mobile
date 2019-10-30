@@ -105,16 +105,16 @@ class Home extends Component {
                     placeholder: '请选择日期',
                 },
             },
-            {
-                title: '图片上传',
-                assembly: 'LogoBox',
-                index: 'logoBox',
-                props: {
-                    must: true,
-                    title: '企业Logo',
-                    about: '仅支持jpg、jpeg、png格式，大小不超过5M',
-                },
-            },
+            // {
+            //     title: '图片上传',
+            //     assembly: 'LogoBox',
+            //     index: 'logoBox',
+            //     props: {
+            //         must: true,
+            //         title: '企业Logo',
+            //         about: '仅支持jpg、jpeg、png格式，大小不超过5M',
+            //     },
+            // },
             {
                 assembly: 'Picture',
                 index: 'picture',
@@ -132,20 +132,8 @@ class Home extends Component {
             singleElection: '',
             andUnion: '',
             datePickerBox: '',
-            logoBox: 'https://www.baidu.com/img/bd_logo1.png',
-            picture: [
-                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=434620136,424427949&fm=26&gp=0.jpg',
-                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
-                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3476833193,2209982244&fm=26&gp=0.jpg',
-                'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=465598662,4026916364&fm=26&gp=0.jpg',
-                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4009962951,2135768552&fm=26&gp=0.jpg',
-                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2722157898,2700618609&fm=26&gp=0.jpg',
-                'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3605800553,1683296319&fm=26&gp=0.jpg',
-                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1915011011,2156126360&fm=26&gp=0.jpg',
-                'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2777233881,1106483217&fm=26&gp=0.jpg',
-                'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1217994855,193273259&fm=26&gp=0.jpg',
-                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
-            ],
+            // logoBox: 'https://www.baidu.com/img/bd_logo1.png',
+            picture: '',
         },
     }
     render() {
@@ -154,11 +142,11 @@ class Home extends Component {
             <Container>
                 <Header title="李小生" />
                 <Content>
-                    <Picture
+                    {/* <Picture
                         title="title"
                         must
                         maxLangth={12}
-                        see
+                        // see
                         value={[
                             'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=434620136,424427949&fm=26&gp=0.jpg',
                             'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
@@ -172,7 +160,7 @@ class Home extends Component {
                             'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1217994855,193273259&fm=26&gp=0.jpg',
                             'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
                         ]}
-                    />
+                    /> */}
                     <p onClick={() => this.forms.getFormsState()}>检测Forms,并获取数据</p>
                     <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
                 </Content>

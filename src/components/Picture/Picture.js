@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import styles from './Picture.module.css'
 import logoadd from './logoadd.png'
-import { id } from 'postcss-selector-parser'
+import { FlatList, Header, Container, Content, Forms, InputBox } from '../../components'
 
+import imgleft from '../../assets/imgleft.png'
+import imgright from '../../assets/imgright.png'
 class Picture extends Component {
     constructor(props) {
         super(props)
@@ -24,40 +26,23 @@ class Picture extends Component {
                 // 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1217994855,193273259&fm=26&gp=0.jpg',
                 // 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
             ],
+            seePic: false,
+            index: 0,
         }
     }
     componentDidMount() {
-        let PictureSee = localStorage.getItem('PictureSee')
         let { value = [] } = this.props
-        if (PictureSee) {
-            let uris = JSON.parse(localStorage.getItem('PictureSee') || '')
-            this.setState({
-                uris,
-            })
-            if (this.props.onChange) {
-                this.props.onChange(uris)
-            }
-            setTimeout(() => {
-                localStorage.setItem('PictureSee', '')
-            }, 0)
-        } else {
+        if (value) {
             this.setState({
                 uris: value,
             })
-            if (this.props.onChange) {
-                this.props.onChange(value)
-            }
         }
     }
     toSee(index) {
-        let that = this
-        let { uris } = this.state
-        let { see } = this.props
-        localStorage.setItem('PictureSee', JSON.stringify(uris))
-        setTimeout(() => {
-            see = see + ''
-            that.props.push('/picturesee/' + see + '/' + index)
-        }, 0)
+        this.setState({
+            seePic: true,
+            index,
+        })
     }
     showUris() {
         let { uris } = this.state
@@ -155,7 +140,7 @@ class Picture extends Component {
                     uris,
                 })
                 if (that.props.onChange) {
-                    that.props.onChange(uris)
+                    that.props.onChange(uris.join(','))
                 }
             },
             cancel: function() {
@@ -163,15 +148,15 @@ class Picture extends Component {
             },
         })
 
-        uris.push(
-            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
-        )
-        that.setState({
-            uris,
-        })
-        if (this.props.onChange) {
-            this.props.onChange(uris)
-        }
+        // uris.push(
+        //     'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
+        // )
+        // that.setState({
+        //     uris,
+        // })
+        // if (this.props.onChange) {
+        //     this.props.onChange(uris.join(','))
+        // }
     }
     addBox() {
         let item = []
@@ -210,8 +195,94 @@ class Picture extends Component {
         }
         return item
     }
+    goBack = () => {
+        this.setState({
+            seePic: false,
+        })
+    }
+    setIndex(add) {
+        let { uris, index } = this.state
+        let len = uris.length - 1
+        if (add) {
+            if (index < len) {
+                index++
+            }
+        } else {
+            if (index > 0) {
+                index--
+            }
+        }
+        this.setState({
+            index,
+        })
+    }
+    del() {
+        let { uris, index } = this.state
+        let newuris = []
+        let len = uris.length - 1
+        for (let i in uris) {
+            if (i != index) {
+                newuris.push(uris[i])
+            }
+        }
+        if (index == len) {
+            if (index == 0) {
+                this.goBack()
+            } else {
+                index--
+            }
+        }
+        this.setState({
+            index,
+            uris: newuris,
+        })
+        if (this.props.onChange) {
+            this.props.onChange(newuris.join(','))
+        }
+    }
+    showuris() {
+        let { uris, index, see } = this.state
+        return (
+            <div className={styles.box}>
+                <img src={uris[index]} className={styles.img} alt="" srcSet="" />,
+                <img
+                    src={imgleft}
+                    className={styles.imgleft}
+                    onClick={() => this.setIndex(0)}
+                    alt=""
+                    srcSet=""
+                />
+                <img
+                    src={imgright}
+                    className={styles.imgright}
+                    onClick={() => this.setIndex(1)}
+                    alt=""
+                    srcSet=""
+                />
+                <p className={see ? styles.indexT : styles.indext}>
+                    {index - 0 + 1 + '/' + uris.length}
+                </p>
+                {see ? null : (
+                    <div className={styles.delBox} onClick={() => this.del()}>
+                        <p className={styles.delT}>删除</p>
+                    </div>
+                )}
+            </div>
+        )
+    }
     render() {
         let { title, must, see } = this.props
+        let { seePic } = this.state
+        if (seePic) {
+            return (
+                <div className={styles.positionFixed}>
+                    <Container>
+                        <Header title="图片查看" Back={this.goBack} />
+                        <Content>{this.showuris()}</Content>
+                    </Container>
+                </div>
+            )
+        }
         if (see) {
             return (
                 <div className={styles.Box}>
@@ -286,7 +357,20 @@ title //标题
 must // 必填
 maxLangth // 最大图片数量，默认13
 see // true 是产看。 false不然就是编辑页面
-data // 回显数据
+value // 回显数据
+
+
+
+模拟器使用时，请取消151 ～ 159 的注释
+        // uris.push(
+        //     'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
+        // )
+        // that.setState({
+        //     uris,
+        // })
+        // if (this.props.onChange) {
+        //     this.props.onChange(uris.join(','))
+        // }
 
  * 
  * 
