@@ -25,6 +25,8 @@ import LogoBox from './LogoBox/LogoBox' //图片上传 用于新增页面
 import DatePickerBox from './DatePickerBox/DatePickerBox' // 时间选择 用于新增页面
 import Submission from './Submission/Submission' //提交按钮 带阴影
 import Forms from './Forms/Forms' //尝试编写form 现支持组件：
+import Picture from './Picture/Picture' //图片组件 新增、修改、详情
+
 export {
     FullScreenLoading,
     FlatList,
@@ -53,4 +55,5 @@ export {
     DatePickerBox,
     Submission,
     Forms,
+    Picture,
 }

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { TabBar } from 'antd-mobile'
-import { FlatList, Header, Container, Content, Forms, InputBox } from '../../components'
+import { FlatList, Header, Container, Content, Forms, InputBox, Picture } from '../../components'
 
 class Home extends Component {
     state = {
@@ -15,7 +15,6 @@ class Home extends Component {
                 assembly: 'InputBox',
                 index: 'inputbox',
                 props: {
-                    must: true,
                     title: 'title',
                     placeholder: '请填写title',
                 },
@@ -116,6 +115,16 @@ class Home extends Component {
                     about: '仅支持jpg、jpeg、png格式，大小不超过5M',
                 },
             },
+            {
+                assembly: 'Picture',
+                index: 'picture',
+                props: {
+                    title: '图片上传（新）',
+                    must: true,
+                    maxLangth: 12,
+                    see: false,
+                },
+            },
         ],
         result: {
             inputbox: '',
@@ -124,6 +133,19 @@ class Home extends Component {
             andUnion: '',
             datePickerBox: '',
             logoBox: 'https://www.baidu.com/img/bd_logo1.png',
+            picture: [
+                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=434620136,424427949&fm=26&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3476833193,2209982244&fm=26&gp=0.jpg',
+                'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=465598662,4026916364&fm=26&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4009962951,2135768552&fm=26&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2722157898,2700618609&fm=26&gp=0.jpg',
+                'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3605800553,1683296319&fm=26&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1915011011,2156126360&fm=26&gp=0.jpg',
+                'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2777233881,1106483217&fm=26&gp=0.jpg',
+                'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1217994855,193273259&fm=26&gp=0.jpg',
+                'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
+            ],
         },
     }
     render() {
@@ -132,6 +154,25 @@ class Home extends Component {
             <Container>
                 <Header title="李小生" />
                 <Content>
+                    <Picture
+                        title="title"
+                        must
+                        maxLangth={12}
+                        see
+                        value={[
+                            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=434620136,424427949&fm=26&gp=0.jpg',
+                            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
+                            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3476833193,2209982244&fm=26&gp=0.jpg',
+                            'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=465598662,4026916364&fm=26&gp=0.jpg',
+                            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4009962951,2135768552&fm=26&gp=0.jpg',
+                            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2722157898,2700618609&fm=26&gp=0.jpg',
+                            'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3605800553,1683296319&fm=26&gp=0.jpg',
+                            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1915011011,2156126360&fm=26&gp=0.jpg',
+                            'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2777233881,1106483217&fm=26&gp=0.jpg',
+                            'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1217994855,193273259&fm=26&gp=0.jpg',
+                            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
+                        ]}
+                    />
                     <p onClick={() => this.forms.getFormsState()}>检测Forms,并获取数据</p>
                     <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
                 </Content>

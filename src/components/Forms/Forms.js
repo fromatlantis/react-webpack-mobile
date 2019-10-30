@@ -13,6 +13,7 @@ import {
     DatePickerBox,
     LogoBox,
     Feedback,
+    Picture,
 } from '../../components'
 
 export default class Forms extends PureComponent {
@@ -34,7 +35,6 @@ export default class Forms extends PureComponent {
                 }
             }
         }
-        console.log(this.state.stateForms)
         return this.state.stateForms
     }
     componentDidMount() {
@@ -125,6 +125,16 @@ export default class Forms extends PureComponent {
                     />,
                 )
             }
+            //  else if (data[i].assembly == 'Picture') {
+            //     item.push(
+            //         <Picture
+            //             key={i}
+            //             {...data[i].props}
+            //             value={stateForms[data[i].index]}
+            //             onChange={value => this.toSetState(data[i].index, value)}
+            //         />,
+            //     )
+            // }
         }
         return item
     }
