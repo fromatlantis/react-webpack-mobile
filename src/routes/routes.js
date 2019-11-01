@@ -30,6 +30,21 @@ const routes = [
             loading: FullScreenLoading,
         }),
     },
+    {
+        path: '/game',
+        component: Loadable({
+            loader: () => import(/* webpackChunkName: "game" */ '../screens/Game'),
+            loading: FullScreenLoading,
+        }),
+    },
+    {
+        path: '/eliminate',
+        component: Loadable({
+            loader: () => import(/* webpackChunkName: "game" */ '../screens/Game/Eliminate'),
+            loading: FullScreenLoading,
+        }),
+    },
+
     // {
     //     path: '/picturesee/:see/:index',
     //     component: Loadable({

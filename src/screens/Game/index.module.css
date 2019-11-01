@@ -1,0 +1,12 @@
+.item{
+    height: 55px;
+    background-color: #3aa;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.item p{
+    color:#fff;
+    font-size: 18px;
+    font-weight: bold
+}
