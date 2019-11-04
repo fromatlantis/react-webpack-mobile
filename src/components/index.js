@@ -26,6 +26,7 @@ import DatePickerBox from './DatePickerBox/DatePickerBox' // 时间选择 用于
 import Submission from './Submission/Submission' //提交按钮 带阴影
 import Forms from './Forms/Forms' //尝试编写form 现支持组件：
 import Picture from './Picture/Picture' //图片组件 新增、修改、详情
+import Jurisdiction from './Jurisdiction/Jurisdiction' //权限组件
 
 export {
     FullScreenLoading,
@@ -56,4 +57,5 @@ export {
     Submission,
     Forms,
     Picture,
+    Jurisdiction,
 }

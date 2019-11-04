@@ -3,7 +3,16 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 import { TabBar } from 'antd-mobile'
-import { FlatList, Header, Container, Content, Forms, InputBox, Picture } from '../../components'
+import {
+    FlatList,
+    Header,
+    Container,
+    Content,
+    Forms,
+    InputBox,
+    Picture,
+    Jurisdiction,
+} from '../../components'
 
 class Home extends Component {
     state = {
@@ -162,7 +171,9 @@ class Home extends Component {
                         ]}
                     /> */}
                     <p onClick={() => this.forms.getFormsState()}>检测Forms,并获取数据</p>
-                    <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
+                    <Jurisdiction data="收费管理">
+                        <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
+                    </Jurisdiction>
                 </Content>
             </Container>
         )

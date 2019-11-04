@@ -22,7 +22,7 @@ export default class Layout extends Component {
             // axios全局设置
             axios.defaults.baseURL = window.tukit.baseUrl ? `${window.tukit.baseUrl}` : '/'
             axios.defaults.headers['Auth-Token'] =
-                window.tukit.token || '27b95657-316f-4a16-b41d-c4db522fdee6'
+                window.tukit.token || '0e5b0cfa-be42-4ee8-ad26-ea63c2e2e7ef'
             // // 真机-本地
             // axios.defaults.baseURL = '/'
             // axios.defaults.headers['Auth-Token'] = 'a2a5eff5-1c90-4c24-8b44-8384e9800449'

@@ -93,3 +93,11 @@
     1. 添加组件Picture（图片上传，及查看）
     2. Forms组件支持Picture组件
     3. 取消LogoBox的引用，取消Forms对LogoBox的支持（代码暂时保留，后续版本逐步删除）
+
+#### 2019-11-4
+
+    1. 添加组件Jurisdiction
+    
+
+
+

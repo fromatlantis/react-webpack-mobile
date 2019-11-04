@@ -7,7 +7,7 @@ const model = {
     namespace: 'authUser',
     state: {
         loginPath: '/home',
-        auth: [], //弃用
+        auth: [], //还没有弃用
         user: {},
         auths: [], //权限返回数据
     },
