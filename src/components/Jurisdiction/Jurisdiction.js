@@ -6,7 +6,6 @@ import { push } from 'connected-react-router'
 class Jurisdiction extends Component {
     render() {
         let { children, data, auth } = this.props
-        console.log(this.props.auth)
         let b = false
         for (let i in auth) {
             if (auth[i] == data) {

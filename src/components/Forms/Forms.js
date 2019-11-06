@@ -36,7 +36,6 @@ export default class Forms extends PureComponent {
                 }
             }
         }
-        console.log(this.state.stateForms)
         return this.state.stateForms
     }
     componentDidMount() {

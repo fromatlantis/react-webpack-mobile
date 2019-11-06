@@ -12,6 +12,7 @@ import {
     InputBox,
     Picture,
     Jurisdiction,
+    Ranges,
 } from '../../components'
 
 class Home extends Component {
@@ -129,11 +130,24 @@ class Home extends Component {
                 index: 'picture',
                 props: {
                     title: '图片上传（新）',
-                    must: true,
+                    // must: true,
                     maxLangth: 12,
                     see: false,
                 },
             },
+        ],
+        rangesData: [
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=434620136,424427949&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2115054162,1112954537&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3476833193,2209982244&fm=26&gp=0.jpg',
+            'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=465598662,4026916364&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=4009962951,2135768552&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2722157898,2700618609&fm=26&gp=0.jpg',
+            'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3605800553,1683296319&fm=26&gp=0.jpg',
+            'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1915011011,2156126360&fm=26&gp=0.jpg',
+            'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2777233881,1106483217&fm=26&gp=0.jpg',
+            // 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1217994855,193273259&fm=26&gp=0.jpg',
+            // 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
         ],
         result: {
             inputbox: '',
@@ -145,8 +159,15 @@ class Home extends Component {
             picture: '',
         },
     }
+    // componentDidMount() {
+    //     document.title = '李小生'
+    // }
     render() {
-        let { data, result } = this.state
+        let { data, result, rangesData } = this.state
+        const row = (item, index) => {
+            return <img src={item} alt="" style={{ width: '100%', height: 50 }} />
+        }
+
         return (
             <Container>
                 <Header title="李小生" />
@@ -170,7 +191,10 @@ class Home extends Component {
                             'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2002915800,1792756943&fm=26&gp=0.jpg',
                         ]}
                     /> */}
-                    <p onClick={() => this.forms.getFormsState()}>检测Forms,并获取数据</p>
+                    <p onClick={() => console.log(this.forms.getFormsState())}>
+                        检测Forms,并获取数据
+                    </p>
+                    <Ranges rangesData={rangesData} renderRow={row} len={5} />
                     <Jurisdiction data="收费管理">
                         <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
                     </Jurisdiction>
