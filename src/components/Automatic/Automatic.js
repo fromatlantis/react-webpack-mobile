@@ -12,6 +12,7 @@ export default class Automatic extends PureComponent {
         }
     }
     setPopup() {
+        console.log('setPopup')
         let { show } = this.state
         let clientHeight = document.body.clientHeight
         let BoundingClientRect = this.automatic.getBoundingClientRect()
@@ -96,29 +97,15 @@ export default class Automatic extends PureComponent {
         })
     }
     render() {
-        let { children, type = 'ondblclick' } = this.props
+        let { children } = this.props
         let { show } = this.state
-        if (type == 'onClick') {
-            return (
-                <div
-                    ref={automatic => (this.automatic = automatic)}
-                    onClick={() => this.setPopup()}>
-                    {children}
-                    {show ? this.showAbarrier() : null}
-                    {show ? this.showPopup() : null}
-                </div>
-            )
-        } else if (type == 'ondblclick') {
-            return (
-                <div
-                    ref={automatic => (this.automatic = automatic)}
-                    ondblclick={() => this.setPopup()}>
-                    {children}
-                    {show ? this.showAbarrier() : null}
-                    {show ? this.showPopup() : null}
-                </div>
-            )
-        }
+        return (
+            <div ref={automatic => (this.automatic = automatic)} onClick={() => this.setPopup()}>
+                {children}
+                {show ? this.showAbarrier() : null}
+                {show ? this.showPopup() : null}
+            </div>
+        )
     }
 }
 
@@ -138,9 +125,9 @@ let Popup = () => { //点击出现的东西
         />
     )
 }
-type // 事件名称 onClick ondblclick
 
-<Automatic Popup={Popup} type='ondblclick'> 
+
+<Automatic Popup={Popup}> 
     <div //展示在页面上的内容
         style={{
             width: '100px',
