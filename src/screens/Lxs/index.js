@@ -167,7 +167,6 @@ class Home extends Component {
         const row = (item, index) => {
             return <img src={item} alt="" style={{ width: '100%', height: 50 }} />
         }
-
         return (
             <Container>
                 <Header title="李小生" />
@@ -194,7 +193,8 @@ class Home extends Component {
                     <p onClick={() => console.log(this.forms.getFormsState())}>
                         检测Forms,并获取数据
                     </p>
-                    <Ranges rangesData={rangesData} renderRow={row} len={5} />
+                    {/* <Ranges rangesData={rangesData} renderRow={row} len={5} /> */}
+
                     <Jurisdiction data="收费管理">
                         <Forms data={data} result={result} ref={forms => (this.forms = forms)} />
                     </Jurisdiction>

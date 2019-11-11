@@ -28,6 +28,7 @@ import Forms from './Forms/Forms' //尝试编写form 现支持组件：
 import Picture from './Picture/Picture' //图片组件 新增、修改、详情
 import Jurisdiction from './Jurisdiction/Jurisdiction' //权限组件
 import Ranges from './Ranges/Ranges' //一行几个
+import Automatic from './Automatic/Automatic' //弹窗
 
 export {
     FullScreenLoading,
@@ -60,4 +61,5 @@ export {
     Picture,
     Jurisdiction,
     Ranges,
+    Automatic,
 }
