@@ -6,4 +6,5 @@
     overflow-y: auto;
     background-color:#f1f2f6;
     -webkit-overflow-scrolling:touch;
+    position: relative;
 }

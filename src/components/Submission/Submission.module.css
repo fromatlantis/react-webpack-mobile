@@ -1,0 +1,47 @@
+.box{
+    display: flex;
+    width: 100%;
+    padding: 30px 0;
+    justify-content: center;
+}
+.button{
+    width:200px;
+    height:40px;
+    background:linear-gradient(180deg,rgba(101,186,255,1) 0%,rgba(36,153,250,1) 100%);
+    box-shadow:0px 3px 7px 0px rgba(60,165,252,0.34);
+    border-radius:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button p{
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:20px;
+}
+.buttonfixed{
+    width:200px;
+    height:40px;
+    background:linear-gradient(180deg,rgba(101,186,255,1) 0%,rgba(36,153,250,1) 100%);
+    box-shadow:0px 3px 7px 0px rgba(60,165,252,0.34);
+    border-radius:20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 3;
+    left: 50%;
+    bottom: 30px;
+    margin-left: -100px;
+}
+.buttonfixed p{
+    height:20px;
+    font-size:14px;
+    font-family:PingFangSC;
+    font-weight:400;
+    color:rgba(255,255,255,1);
+    line-height:20px;
+}

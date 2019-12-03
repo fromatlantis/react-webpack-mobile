@@ -1,0 +1,143 @@
+.img{
+    display: flex;
+    max-width: 100%;
+    max-height: 100%;
+}
+.box{
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+.indext{
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    bottom: 75px;
+    font-weight: bold;
+}
+.indexT{
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    bottom: 50px;
+    font-weight: bold;
+}
+.imgleft{
+    position: absolute;
+    left: 10px;
+    top: 45%;
+    z-index: 2;
+    width: 55px;
+    height: 55px;
+}
+.imgright{
+    position: absolute;
+    right: 10px;
+    top: 45%;
+    z-index: 2;
+    width: 55px;
+    height: 55px;
+}
+.delBox{
+    width: 100%;
+    height: 55px;
+    position: absolute;
+    left:0;
+    bottom: 0;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.delBox p{
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.Box{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+  font-size: 14px;
+  font-family: PingFangSC;
+  font-weight: 400;
+  color: rgba(48, 48, 48, 1);
+  line-height: 20px;
+  display: flex;
+  width: 70px;
+  margin: 20px;
+  flex-shrink: 0;
+}
+.urisBox{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.uriBox{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.uri{
+    width: 100px;
+    height: 100px;
+}
+.one{
+    width: 250px;
+    height: 250px;
+}
+.two{
+    width: 180px;
+    height: 180px;
+}
+.moreBox{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moreT{
+    color: #fff;
+    font-size: 20px;
+}
+.add {
+  width: 100px;
+  height: 100px;
+  border: 1px dashed #c2c2c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.add img {
+  width: 26px;
+  height: 26px;
+}
+.positionFixed{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    z-index: 3;
+}

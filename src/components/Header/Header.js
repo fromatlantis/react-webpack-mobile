@@ -19,7 +19,7 @@ class Header extends PureComponent {
     }
     render() {
         const headerPadding = window.tukit.safeArea ? window.tukit.safeArea.topInset : 20
-        const { style, noBack } = this.props
+        const { style, noBack, Back } = this.props
         if (noBack) {
             return (
                 <NavBar
@@ -45,7 +45,7 @@ class Header extends PureComponent {
                         <Icon
                             type="left"
                             onClick={() => {
-                                this.props.goBack()
+                                Back ? Back() : this.props.goBack()
                             }}
                         />
                     }>

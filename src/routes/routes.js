@@ -15,6 +15,14 @@ const routes = [
             loading: FullScreenLoading,
         }),
     },
+
+    {
+        path: '/lxs',
+        component: Loadable({
+            loader: () => import(/* webpackChunkName: "lxs" */ '../screens/Lxs'),
+            loading: FullScreenLoading,
+        }),
+    },
     {
         path: '/demo',
         component: Loadable({
@@ -22,6 +30,14 @@ const routes = [
             loading: FullScreenLoading,
         }),
     },
+    // {
+    //     path: '/picturesee/:see/:index',
+    //     component: Loadable({
+    //         loader: () =>
+    //             import(/* webpackChunkName: "picturesee" */ '../components/PictureSee/PictureSee'),
+    //         loading: FullScreenLoading,
+    //     }),
+    // },
 ]
 
 export default auths => {

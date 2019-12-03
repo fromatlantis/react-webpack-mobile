@@ -17,7 +17,7 @@
 - "redux": "^4.0.1",
 - "webpack": "4.19.1"
 ### 运行项目
-1. `git clone https://github.com/fromatlantis/react-webpack.git`
+1. `git clone https://github.com/fromatlantis/react-webpack-mobile.git`
 2. `cd react-webpack`
 3. `yarn isntall`
 4. `yarn start`
@@ -76,3 +76,37 @@
     - 推送到远程 `git push origin v0.3.0`
     - 删除本地tag `git tag -d v0.3.0`
     - 删除远程tag `git push origin --delete v0.3.0`
+
+
+### 更新日志
+#### 2019-10-28
+
+    1. 添加demo页面。方便查看组件效果。 
+        http://localhost:3000/#/lxs
+    2. 添加Forms 组件。
+    3. 组件index页面，注释说明修改。
+        Label 单选 -> 复选
+    4. 添加必填
+        AndUnion、DatePickerBox
+#### 2019-10-30
+
+    1. 添加组件Picture（图片上传，及查看）
+    2. Forms组件支持Picture组件
+    3. 取消LogoBox的引用，取消Forms对LogoBox的支持（代码暂时保留，后续版本逐步删除）
+
+#### 2019-11-4
+
+    1. 添加组件Jurisdiction
+
+#### 2019-11-6
+
+    1. 添加组件Ranges
+
+
+#### 2019-11-11
+
+    1. 添加组件Automatic
+    
+
+
+

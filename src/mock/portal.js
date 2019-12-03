@@ -1,6 +1,5 @@
 import Mock from 'mockjs'
 Mock.mock(/api\/portals/, function(options) {
-    console.log(options.body)
     return {
         data: [
             {
